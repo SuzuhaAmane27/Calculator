@@ -1,3 +1,4 @@
 enum TypeOfNumbers {
-    ARABIC, ROMAN
+    ARABIC,
+    ROMAN
 }

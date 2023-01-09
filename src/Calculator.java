@@ -66,21 +66,21 @@ public class Calculator {
             case "/":
                 result = firstNumber / secondNumber;
                 break;
-            default: throw new Exception("Операции могут быть только: \"+, -, *, /\" ");
+            default:
+                throw new Exception("Операции могут быть только: \"+, -, *, /\" ");
         }
-
 
 
         if ((firstType == TypeOfNumbers.ROMAN) && (secondType == TypeOfNumbers.ROMAN)) {
             if (result < 0) {
                 throw new Exception("Римское число не может быть меньше 0!");
             }
-            System.out.println("= " + Converters.toRoman(result));
-        } else System.out.println("= " + result);
+            System.out.println(Converters.toRoman(result));
+        } else System.out.println(result);
 
     }
 
-    public static void start(){
+    public static void start() {
         System.out.println("Добро пожаловать в мой целочисленный калькулятор!");
         System.out.println("Он умеет выполнять операции с арабскими и римскими числами! (только с одним типом чисел одновременно)");
         System.out.println("Введеные числа должны быть в диапозоне от 1 до 10 включительно.");

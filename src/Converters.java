@@ -15,7 +15,6 @@ public class Converters {
         put("IX", 9);
         put("X", 10);
     }};
-
     static {
         map.put(100, "C");
         map.put(90, "XC");
