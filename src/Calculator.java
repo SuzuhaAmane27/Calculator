@@ -67,7 +67,9 @@ public class Calculator {
             case "/":
                 result = firstNumber / secondNumber;
                 break;
+            default: throw new Exception("Операции могут быть только: \"+, -, *, /\" ");
         }
+
 
 
         if ((firstType == TypeOfNumbers.ROMAN) && (secondType == TypeOfNumbers.ROMAN)) {
