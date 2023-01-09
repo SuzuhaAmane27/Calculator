@@ -18,10 +18,6 @@ public class Converters {
 
     static {
 
-        map.put(1000, "M");
-        map.put(900, "CM");
-        map.put(500, "D");
-        map.put(400, "CD");
         map.put(100, "C");
         map.put(90, "XC");
         map.put(50, "L");
@@ -47,7 +43,7 @@ public class Converters {
     }
 
     public static int romanToInt(String s) {
-        int ans = 0, num = 0;
+        int rom = 0, num = 0;
         for (int i = s.length() - 1; i >= 0; i--) {
             switch (s.charAt(i)) {
                 case 'I':
@@ -65,12 +61,11 @@ public class Converters {
                 case 'C':
                     num = 100;
                     break;
-
             }
-            if (4 * num < ans) ans -= num;
-            else ans += num;
+            if (4 * num < rom) rom -= num;
+            else rom += num;
         }
-        return ans;
+        return rom;
     }
 
 
