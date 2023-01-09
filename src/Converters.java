@@ -17,7 +17,6 @@ public class Converters {
     }};
 
     static {
-
         map.put(100, "C");
         map.put(90, "XC");
         map.put(50, "L");
@@ -27,7 +26,6 @@ public class Converters {
         map.put(5, "V");
         map.put(4, "IV");
         map.put(1, "I");
-
     }
 
     public static int getArabianValue(String key) {
