@@ -1,39 +1,91 @@
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 
 public class Calculator {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
-    Scanner scanner = new Scanner(System.in);
-    String Operation = scanner.nextLine();
-    String[] elements = Operation.split(" ");
-    int FirstNumber = 0;
-    int SecondNumber = 0;
-    TypeOfNumbers type;
+        Calculator.start();
+
+        Scanner scanner = new Scanner(System.in);
+        String Operation = scanner.nextLine();
+        String[] elements = Operation.split(" ");
+        int firstNumber = 0;
+        int secondNumber = 0;
+        TypeOfNumbers firstType;
+        int result = 0;
+        TypeOfNumbers secondType;
 
 
+        try {
+            firstNumber = Integer.parseInt(elements[0]);
+            firstType = TypeOfNumbers.ARABIC;
+            if ((firstNumber < 0) || (firstNumber > 10)) {
+                throw new Exception("Введеные числа не удовлетворяют условию!");
+            }
+        } catch (NumberFormatException e) {
+            firstNumber = Converters.romanToInt(elements[0]);
+
+            if ((firstNumber < 0) || (firstNumber > 10)) {
+                throw new Exception("Введеные числа не удовлетворяют условию!");
+            }
+            firstType = TypeOfNumbers.ROMAN;
+        }
+
+        try {
+            secondNumber = Integer.parseInt(elements[2]);
+            if ((secondNumber < 0) || (secondNumber > 10)) {
+                throw new Exception("Введеные числа не удовлетворяют условию!");
+            }
+            secondType = TypeOfNumbers.ARABIC;
+        } catch (Exception e) {
+            secondNumber = Converters.romanToInt(elements[2]);
+            if ((secondNumber < 0) || (secondNumber > 10)) {
+                throw new Exception("Введеные числа не удовлетворяют условию!");
+            }
+            secondType = TypeOfNumbers.ROMAN;
+        }
+
+        if ((firstType == TypeOfNumbers.ARABIC) && (secondType == TypeOfNumbers.ARABIC)) {
+
+        } else if ((firstType == TypeOfNumbers.ROMAN) && (secondType == TypeOfNumbers.ROMAN)) {
+
+        } else throw new Exception("Числа разных типов!");
 
 
-    try {
-         FirstNumber = Integer.parseInt(elements[0]);
-         type = TypeOfNumbers.ARABIC;
-    } catch (NumberFormatException  e){
-        FirstNumber = Romanian.getArabianValue(String.valueOf(elements[0].charAt(0)));
-        type = TypeOfNumbers.ROMAN;
-        System.out.println(FirstNumber);
+        String token = elements[1];
+        switch (token) {
+            case "+":
+                result = firstNumber + secondNumber;
+                break;
+            case "-":
+                result = firstNumber - secondNumber;
+                break;
+            case "*":
+                result = firstNumber * secondNumber;
+                break;
+            case "/":
+                result = firstNumber / secondNumber;
+                break;
+        }
+
+
+        if ((firstType == TypeOfNumbers.ROMAN) && (secondType == TypeOfNumbers.ROMAN)) {
+            if (result < 0) {
+                throw new Exception("Римское число не может быть меньше 0!");
+            }
+            System.out.println("= " + Converters.toRoman(result));
+        } else System.out.println("= " + result);
+
     }
-    try {
-         SecondNumber = Integer.parseInt(elements[2]);
-    } catch (Exception e){
-         SecondNumber = Romanian.getArabianValue(elements[2]);
-        System.out.println(SecondNumber);
+
+    public static void start(){
+        System.out.println("Добро пожаловать в мой целочисленный калькулятор!");
+        System.out.println("Он умеет выполнять операции с арабскими и римскими числами! (только с одним типом чисел одновременно)");
+        System.out.println("Введеные числа должны быть в диапозоне от 1 до 10 включительно.");
+        System.out.println("Выражение вводится в строку. Между числами и знаком должен быть пробел!");
+        System.out.println("Введите выражение...");
     }
-    String token = elements[1];
 
-
-
-
-        System.out.println(FirstNumber + " " + SecondNumber);
-    }
 
 }
