@@ -45,11 +45,9 @@ public class Calculator {
             secondType = TypeOfNumbers.ROMAN;
         }
 
-        if ((firstType == TypeOfNumbers.ARABIC) && (secondType == TypeOfNumbers.ARABIC)) {
-
-        } else if ((firstType == TypeOfNumbers.ROMAN) && (secondType == TypeOfNumbers.ROMAN)) {
-
-        } else throw new Exception("Числа разных типов!");
+        if (firstType != secondType) {
+            throw new Exception("Числа разных типов!");
+        }
 
 
         String token = elements[1];
