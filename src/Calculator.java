@@ -3,13 +3,14 @@ import java.util.Scanner;
 
 public class Calculator {
     public static void main(String[] args) throws Exception {
-
-        Calculator.start();
-
         Scanner scanner = new Scanner(System.in);
-        String Operation = scanner.nextLine();
-        String[] elements = Operation.split(" ");
-        if (elements.length > 3){
+        Calculator.start();
+        System.out.println(calc(scanner.nextLine()));
+    }
+
+    public static String calc(String input) throws Exception {
+        String[] elements = input.split(" ");
+        if (elements.length > 3) {
             throw new Exception("Операции выполняются только над двумя числами!");
         }
         int firstNumber = 0;
@@ -76,10 +77,12 @@ public class Calculator {
             if (result < 0) {
                 throw new Exception("Римское число не может быть меньше 0!");
             }
-            System.out.println(Converters.toRoman(result));
-        } else System.out.println(result);
+            return (Converters.toRoman(result));
+        } else return Integer.toString(result);
 
     }
+
+
 
     public static void start() {
         System.out.println("Добро пожаловать в мой целочисленный калькулятор!");
