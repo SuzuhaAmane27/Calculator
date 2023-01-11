@@ -9,6 +9,9 @@ public class Calculator {
         Scanner scanner = new Scanner(System.in);
         String Operation = scanner.nextLine();
         String[] elements = Operation.split(" ");
+        if (elements.length > 3){
+            throw new Exception("Операции выполняются только над двумя числами!");
+        }
         int firstNumber = 0;
         int secondNumber = 0;
         TypeOfNumbers firstType;
